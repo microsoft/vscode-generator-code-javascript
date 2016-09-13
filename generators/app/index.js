@@ -10,7 +10,7 @@ module.exports = generators.Base.extend({
     constructor: function () {
         generators.Base.apply(this, arguments);
 
-        this.argument('codeExec', { type: String, defaults: 'code', optional: true });
+        this.argument('codeExec', { type: String, defaults: 'code-insiders', optional: true });
         this.ctx = Object.create(null);
     },
 
