@@ -19,7 +19,7 @@
     "vscode"
   ],
   "dependencies": {
-    "yeoman-generator": "^0.24.1",
+    "yeoman-generator": "^0.20.3",
     "yosay": "^1.2.0"
   },
   "devDependencies": {

@@ -59,25 +59,23 @@ module.exports = generators.Base.extend({
     },
     _checkInstalledExtensions() {
         // code-extensions
-        return new Promise(resolve => {
-            cp.exec(`${this.codeExec} --list-extensions`, (err, stdout, stderr) => {
-                if (!err) {
-                    this.ctx.installedExtensions = new Set(stdout.trim().split(/[\r\n]/));
-                }
-                resolve();
-            });
+        const resolve = this.async();
+        
+        cp.exec(`${this.codeExec} --list-extensions`, (err, stdout, stderr) => {
+            if (!err) {
+                this.ctx.installedExtensions = new Set(stdout.trim().split(/[\r\n]/));
+            }
+            resolve();
         });
     },
 
     initializing() {
 
-        this.log(yosay('Welcome to the JavaScript project generator!'));
+        this.log(yosay('Welcome to the JavaScript project assistant!'));
 
-        return Promise.all([
-            this._checkConfigJson(),
-            this._checkTypesDependencies(),
-            this._checkInstalledExtensions(),
-        ]);
+        this._checkConfigJson();
+        this._checkTypesDependencies();
+        this._checkInstalledExtensions();
     },
 
     prompting() {
@@ -119,9 +117,10 @@ module.exports = generators.Base.extend({
                 message: 'Install \'eslint\'-extension?'
             }
         ];
-
-        return this.prompt(prompts).then(answers => { 
+        const resolve = this.async();
+        this.prompt(prompts, answers => {
             this.answers = answers;
+            resolve();
         });
     },
 
