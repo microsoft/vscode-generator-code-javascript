@@ -1,0 +1,25 @@
+{
+    "name": "generator-code-javascript",
+    "version": "0.1.0",
+    "description": "Generator for JavaScript projects",
+    "files": [
+        "generators/app"
+    ],
+    "keywords": [
+        "yeoman-generator",
+        "javascript",
+        "vscode"
+    ],
+    "dependencies": {
+        "yeoman-generator": "^0.24.1",
+        "yosay": "^1.2.0"
+    },
+    "devDependencies": {
+        "typescript": "^2.1.0-dev.20160912"
+    },
+    "optionalDependencies": {
+        "@types/yeoman-generator": "*",
+        "@types/yosay": "*",
+        "@types/typescript": "*"
+    }
+}
